@@ -1,6 +1,6 @@
 package web.controllers;
 
-import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +8,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import web.DAO.UserDAO;
 import web.model.User;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/users")
@@ -53,7 +55,7 @@ public class UserController {
         if (bindingResult.hasErrors()) {
             return "users/edit";
         }
-        userDAO.update(id, user);
+        userDAO.update(user);
         return "redirect:/users";
     }
     @DeleteMapping("/{id}")
